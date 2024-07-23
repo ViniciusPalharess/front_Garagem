@@ -16,6 +16,8 @@ const modelo = reactive({ ...defaultModelo });
 
 onMounted(async () => {
   modelos.value = await modelosApi.buscarTodosOsModelos();
+  marcas.value = await marcasApi.buscarTodasAsMarcas();
+  categorias.value = await categoriasApi.buscarTodasAsCategorias();
 });
 
 function limpar() {
@@ -37,16 +39,10 @@ function editar(modelo_para_editar) {
 }
 
 async function excluir(id) {
-  await modelosApi.excluirModeloo(id);
+  await modelosApi.excluirModelo(id);
   modelos.value = await modelosApi.buscarTodosOsModelos();
   limpar();
 }
-
-onMounted(async () => {
-  marcas.value = await marcasApi.buscarTodasAsMarcas()
-  categorias.value = await categoriasApi.buscarTodasAsCategorias();
-  console.log(categorias.value)
-})
 </script>
 
 <template>
