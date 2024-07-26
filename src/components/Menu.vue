@@ -7,9 +7,9 @@
       </svg>
     </div>
 
-    <div class="menu">
+    <div class="menu" :class="{ 'dropdown-active': menuAberto }">
       <nav>
-        <ul :class="{ 'active': menuAberto }" @click.away="menuAberto = false" class="nav-menu">
+        <ul class="nav-menu">
           <li><router-link :to="{ name: 'home' }">Home</router-link></li>
           <li><router-link to="/categorias">Categorias</router-link></li>
           <li><router-link to="/acessorios">Acessórios</router-link></li>
@@ -32,6 +32,7 @@
   </header>
 </template>
 
+
 <script setup>
 import { useAuthStore } from '@/stores/auth';
 import { ref } from 'vue';
@@ -53,7 +54,7 @@ const mostrarEmail = ref(false);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   padding: 0.2rem 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -64,29 +65,32 @@ const mostrarEmail = ref(false);
   margin-right: 1rem;
 }
 
+.menu {
+  position: relative;
+}
+
 .nav-menu {
   display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 100%; /* Ocupa toda a largura disponível */
+  width: 100%; 
 }
 
 .menu li {
-  flex: 1; /* Distribui proporcionalmente */
-  text-align: center; /* Centraliza o texto */
+  flex: 1; 
+  text-align: center; 
 }
 
 .menu li a {
   display: block;
   padding: 1rem;
   text-decoration: none;
-  color: #333;
+  color: #000000;
 }
 
 .menu li a:hover {
-  background: #333;
-  color: #fff;
+  background: #eeeeee; 
 }
 
 .email-separado {
@@ -114,30 +118,31 @@ const mostrarEmail = ref(false);
     display: block; 
   }
 
-  .menu {
-    flex: 1; 
-  }
-
-  .nav-menu {
-    display: none;
+  .menu.dropdown-active .nav-menu {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 60px;
     right: 0;
     left: 0;
-    background-color: #ffffff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    background-color: #e3f5e3; 
+    box-shadow: 0 10px 90px rgba(255, 227, 227, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     border-radius: 10px;
     padding: 10px 0;
     z-index: 1000;
   }
 
-  .nav-menu.active {
+  .menu .nav-menu {
+    display: none;
+  }
+
+  .menu.dropdown-active .nav-menu {
     display: flex;
   }
 
   .menu li {
     border: none; 
-    width: 100%; /* Cada item ocupa a largura total */
+    width: 100%; 
     text-align: center; 
   }
 
@@ -147,8 +152,7 @@ const mostrarEmail = ref(false);
   }
 
   .menu li a:hover {
-    background: #333;
-    color: #fff;
+    background: #45a049; 
   }
 }
 </style>
