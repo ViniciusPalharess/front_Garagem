@@ -9,7 +9,7 @@ import Menu from '@/components/Menu.vue';
 
 <template>
   <div id="app">
-    <Menu />
+    <!-- <Menu /> -->
     
     <main>
       <router-view />

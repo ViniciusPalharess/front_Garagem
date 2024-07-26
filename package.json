@@ -9,13 +9,16 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "@passageidentity/passage-auth": "^0.1.0-beta.28",
     "@passageidentity/passage-elements": "^1.21.5",
-    "axios": "^0.27.2",
+    "axios": "^1.7.2",
     "dotenv": "^16.3.1",
     "pinia": "^2.0.14",
+    "vite-plugin-pwa": "^0.20.1",
     "vue": "^3.2.37",
-    "vue-router": "^4.1.2"
+    "vue-router": "^4.1.2",
+    "workbox-precaching": "^7.1.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",
